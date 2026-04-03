@@ -16,7 +16,6 @@ import {
   Sparkles,
   Trash2,
 } from "lucide-react";
-
 import { Badge } from "./components/ui/badge";
 import { Button } from "./components/ui/button";
 import {
@@ -244,7 +243,7 @@ function getTranscriptionRecord(value: unknown): TranscriptionRecord | null {
 
   return null;
 }
-
+// app
 function App() {
   const [selectedAudio, setSelectedAudio] = useState<File | null>(null);
   const [audioPreviewUrl, setAudioPreviewUrl] = useState("");
