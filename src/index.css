@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5ecde;
+  --foreground: #241c17;
+  --muted: #6e635a;
+  --muted-foreground: #7b7168;
+  --card: rgba(255, 251, 247, 0.76);
+  --card-foreground: #221a15;
+  --primary: #0f766e;
+  --primary-foreground: #f8fcfb;
+  --secondary: #f4dcc0;
+  --secondary-foreground: #4f3420;
+  --accent: #c96c31;
+  --border: rgba(63, 46, 34, 0.12);
+  --ring: rgba(15, 118, 110, 0.28);
+  --danger: #b9382f;
+  --danger-foreground: #fff7f5;
+  --shadow: 0 24px 60px rgba(58, 38, 24, 0.14);
+  --font-sans: "Aptos", "Segoe UI Variable Text", "Segoe UI", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
+}
+
+@layer base {
+  * {
+    @apply border-[var(--border)];
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background:
+      radial-gradient(circle at top left, rgba(15, 118, 110, 0.16), transparent 32%),
+      radial-gradient(circle at top right, rgba(201, 108, 49, 0.16), transparent 28%),
+      linear-gradient(180deg, #f6efe4 0%, #f4ead9 48%, #efe2cd 100%);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+
+  ::selection {
+    background: rgba(15, 118, 110, 0.18);
+  }
+}
