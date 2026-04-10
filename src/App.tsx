@@ -740,11 +740,11 @@ function App() {
       <div className="absolute bottom-0 right-[-10%] h-80 w-80 rounded-full bg-[rgba(201,108,49,0.16)] blur-3xl" />
 
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
-        <header className="rounded-[32px] border border-white/50 bg-white/55 px-5 py-5 shadow-[var(--shadow)] backdrop-blur-xl sm:px-7">
+        <header className="rounded-4xl border border-white/50 bg-white/55 px-5 py-5 shadow-[var(--shadow)] backdrop-blur-xl sm:px-7">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="space-y-3">
               <Badge className="bg-[rgba(15,118,110,0.12)] text-[var(--primary)]">
-                NeuroICU Voice Intake
+                NeuroICU Voice Intake (automation)
               </Badge>
               <div className="space-y-2">
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-[var(--muted)]">
