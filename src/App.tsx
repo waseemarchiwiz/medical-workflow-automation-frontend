@@ -176,6 +176,18 @@ function getParsedSoapSections(value: unknown): SoapSections | null {
   }
 
   const response = value as {
+    data?: {
+      parsed?: unknown;
+      soap?: {
+        parsed?: unknown;
+        record?: {
+          description?: unknown;
+        };
+      };
+      record?: {
+        description?: unknown;
+      };
+    };
     parsed?: unknown;
     soap?: {
       parsed?: unknown;
@@ -188,11 +200,13 @@ function getParsedSoapSections(value: unknown): SoapSections | null {
     };
   };
 
+  const soapPayload = response.data ?? response;
+
   return (
-    readSoapSections(response?.data?.soap?.parsed) ||
-    readSoapSections(response?.data?.parsed) ||
-    parseSoapSectionsFromJson(response?.data?.soap?.record?.description) ||
-    parseSoapSectionsFromJson(response?.data?.record?.description)
+    readSoapSections(soapPayload.soap?.parsed) ||
+    readSoapSections(soapPayload.parsed) ||
+    parseSoapSectionsFromJson(soapPayload.soap?.record?.description) ||
+    parseSoapSectionsFromJson(soapPayload.record?.description)
   );
 }
 
@@ -214,13 +228,20 @@ function getTranscriptionRecord(value: unknown): TranscriptionRecord | null {
     return null;
   }
 
-  const record = (
-    value as {
+  const response = value as {
+    data?: {
       transcription?: {
         record?: Record<string, unknown>;
       };
-    }
-  ).transcription?.record;
+    };
+    transcription?: {
+      record?: Record<string, unknown>;
+    };
+  };
+
+  const record =
+    response.data?.transcription?.record ??
+    response.transcription?.record;
 
   if (!record) {
     return null;
