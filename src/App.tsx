@@ -189,10 +189,10 @@ function getParsedSoapSections(value: unknown): SoapSections | null {
   };
 
   return (
-    readSoapSections(response.soap?.parsed) ||
-    readSoapSections(response.parsed) ||
-    parseSoapSectionsFromJson(response.soap?.record?.description) ||
-    parseSoapSectionsFromJson(response.record?.description)
+    readSoapSections(response?.data?.soap?.parsed) ||
+    readSoapSections(response?.data?.parsed) ||
+    parseSoapSectionsFromJson(response?.data?.soap?.record?.description) ||
+    parseSoapSectionsFromJson(response?.data?.record?.description)
   );
 }
 
