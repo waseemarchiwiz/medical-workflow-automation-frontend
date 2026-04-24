@@ -1,17 +1,8 @@
 import axios, { type AxiosProgressEvent } from "axios";
 
-import {
-  CONFIRM_SOAP_PATH,
-  GET_SOAPS_PATH,
-  UPLOAD_VOICE_PATH,
-  apiClient,
-} from "../config";
-
-type RecordIdentifier = number | string;
-
-interface UploadAudioParams {
-  file: File;
-}
+import type { RecordIdentifier } from "@/features/soap-workflow/types";
+import { apiClient } from "@/shared/api/client";
+import { appConfig } from "@/shared/config/app.config";
 
 interface GetSoapNotesParams {
   transcriptionId: RecordIdentifier;
@@ -31,7 +22,9 @@ function getErrorMessage(error: unknown) {
       typeof error.response.data === "object" &&
       "message" in error.response.data
     ) {
-      return String(error.response.data.message);
+      return String(
+        error.response.data.message + "Details: " + error.response.data?.error,
+      );
     }
 
     return error.message || "Request failed.";
@@ -40,17 +33,21 @@ function getErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : "An unknown error occurred.";
 }
 
-export async function uploadAudio(
-  { file }: UploadAudioParams,
+export async function uploadVoiceNote(
+  file: File,
   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void,
 ) {
   try {
     const formData = new FormData();
     formData.append("voice", file);
 
-    const response = await apiClient.post(UPLOAD_VOICE_PATH, formData, {
-      onUploadProgress,
-    });
+    const response = await apiClient.post(
+      appConfig.api.uploadVoicePath,
+      formData,
+      {
+        onUploadProgress,
+      },
+    );
 
     return response.data;
   } catch (error) {
@@ -58,12 +55,12 @@ export async function uploadAudio(
   }
 }
 
-export async function getSoapNotes({
+export async function requestSoapNotes({
   transcriptionId,
   description,
 }: GetSoapNotesParams) {
   try {
-    const response = await apiClient.post(GET_SOAPS_PATH, {
+    const response = await apiClient.post(appConfig.api.getSoapPath, {
       id: transcriptionId,
       description,
     });
@@ -74,13 +71,13 @@ export async function getSoapNotes({
   }
 }
 
-export async function confirmSoapNotes({
+export async function confirmSoapWorkflow({
   transcriptionId,
   description,
   soapNotes,
 }: ConfirmSoapNotesParams) {
   try {
-    const response = await apiClient.post(CONFIRM_SOAP_PATH, {
+    const response = await apiClient.post(appConfig.api.confirmSoapPath, {
       id: transcriptionId,
       description,
       soapNotes,
