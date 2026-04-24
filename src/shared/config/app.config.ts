@@ -1,7 +1,7 @@
 // api url
 const api_url =
   import.meta.env.VITE_API_URL?.trim() || "http://192.168.1.98:8000/v1/api";
-
+// app config
 export const appConfig = {
   title: "SOAP Notes Automation",
   audioAccept: "audio/*,.wav,.mp3,.m4a,.aac,.webm,.ogg",
