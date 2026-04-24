@@ -61,7 +61,7 @@ function WorkflowStepsCard(props: WorkflowStepsCardProps) {
   const navigate = useNavigate();
 
   const handleRefresh = () => {
-    navigate(0); // Refresh the current page
+    navigate("/"); // Refresh the current page
   };
 
   return (
@@ -296,7 +296,7 @@ function WorkflowStepsCard(props: WorkflowStepsCardProps) {
                 ) : (
                   <>
                     <ShieldCheck className="mr-2 h-4 w-4" />
-                    Confirm final result
+                    Want to Try Another Audio?
                   </>
                 )}
               </Button>
