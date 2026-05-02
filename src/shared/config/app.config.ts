@@ -4,7 +4,7 @@ const api_url =
 // app config
 export const appConfig = {
   title: "SOAP Notes Automation",
-  audioAccept: "audio/*,.wav,.mp3,.m4a,.aac,.webm,.ogg",
+  audioAccept: "audio/*,video/mp4,.wav,.mp3,.m4a,.aac,.webm,.ogg,.mp4",
   maxAudioSizeBytes: 50 * 1024 * 1024,
   api: {
     baseUrl: api_url,

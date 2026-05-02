@@ -1,9 +1,9 @@
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from "react-router-dom";
 
-import { appRoutes } from '@/app/routes/paths'
-import { buttonVariants } from '@/shared/components/ui/button.styles'
-import { appConfig } from '@/shared/config/app.config'
-import { cn } from '@/shared/lib/utils'
+import { appRoutes } from "@/app/routes/paths";
+import { buttonVariants } from "@/shared/components/ui/button.styles";
+import { appConfig } from "@/shared/config/app.config";
+import { cn } from "@/shared/lib/utils";
 
 function AppLayout() {
   return (
@@ -14,7 +14,10 @@ function AppLayout() {
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
         <header className="rounded-full border border-white/50 bg-white/55 px-4 py-3 shadow-[var(--shadow)] backdrop-blur-xl sm:px-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <Link className="inline-flex items-center gap-3 text-[var(--foreground)]" to={appRoutes.workflow}>
+            <Link
+              className="inline-flex items-center gap-3 text-[var(--foreground)]"
+              to={appRoutes.ambientRecording}
+            >
               <span className="rounded-full bg-[rgba(15,118,110,0.12)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
                 NeuroICU
               </span>
@@ -28,15 +31,29 @@ function AppLayout() {
                 className={({ isActive }) =>
                   cn(
                     buttonVariants({
-                      size: 'sm',
-                      variant: isActive ? 'default' : 'ghost',
+                      size: "sm",
+                      variant: isActive ? "default" : "ghost",
                     }),
-                    'rounded-full px-4',
+                    "rounded-full px-4",
+                  )
+                }
+                to={appRoutes.ambientRecording}
+              >
+                Ambient Recording
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  cn(
+                    buttonVariants({
+                      size: "sm",
+                      variant: isActive ? "default" : "ghost",
+                    }),
+                    "rounded-full px-4",
                   )
                 }
                 to={appRoutes.workflow}
               >
-                Workflow
+                SOAP Workflow
               </NavLink>
             </nav>
           </div>
@@ -47,7 +64,7 @@ function AppLayout() {
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export { AppLayout }
+export { AppLayout };

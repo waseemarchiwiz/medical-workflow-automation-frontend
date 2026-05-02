@@ -1,8 +1,10 @@
 export const appRouteSegments = {
-  workflow: 'workflow',
-} as const
+  workflow: "workflow",
+  ambientRecording: "ambient-recording",
+} as const;
 
 export const appRoutes = {
-  home: '/',
+  home: "/",
   workflow: `/${appRouteSegments.workflow}`,
-} as const
+  ambientRecording: `/${appRouteSegments.ambientRecording}`,
+} as const;

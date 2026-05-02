@@ -1,6 +1,6 @@
 # NeuroICU Medical Workflow Automation Frontend
 
-This frontend supports the voice-note workflow for uploading or recording audio, reviewing the transcription, generating SOAP notes, and confirming the final result.
+This frontend supports ambient recording sessions plus the original voice-note workflow for uploading or recording audio, reviewing the transcription, generating SOAP notes, and confirming the final result.
 
 ## Stack
 
@@ -11,7 +11,8 @@ This frontend supports the voice-note workflow for uploading or recording audio,
 
 ## Routes
 
-- `/` redirects to `/workflow`
+- `/` redirects to `/ambient-recording`
+- `/ambient-recording` renders the ambient recording session workspace
 - `/workflow` renders the main SOAP automation flow
 - `*` renders a not-found page
 
@@ -25,6 +26,7 @@ src/
     routes/
     styles/
   features/
+    ambient-workflow/
     soap-workflow/
       components/
       hooks/

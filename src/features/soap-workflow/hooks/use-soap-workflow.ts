@@ -24,7 +24,7 @@ import {
   confirmSoapWorkflow,
   requestSoapNotes,
   uploadVoiceNote,
-} from "@/features/soap-workflow/services/soap-workflow.service";
+} from "@/features/soap-workflow/services/soap-workflow.services";
 import type {
   SoapSections,
   StatusTone,

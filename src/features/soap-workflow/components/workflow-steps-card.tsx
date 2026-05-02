@@ -1,5 +1,4 @@
 import { LoaderCircle, ShieldCheck, Sparkles } from "lucide-react";
-
 import type {
   SoapSections,
   TranscriptionRecord,

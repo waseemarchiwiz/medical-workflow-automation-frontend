@@ -1,12 +1,16 @@
 import axios, { type AxiosProgressEvent } from "axios";
 
-import type { RecordIdentifier } from "@/features/soap-workflow/types";
+import type {
+  DialogueTurn,
+  RecordIdentifier,
+} from "@/features/soap-workflow/types";
 import { apiClient } from "@/shared/api/client";
 import { appConfig } from "@/shared/config/app.config";
 
 interface GetSoapNotesParams {
   transcriptionId: RecordIdentifier;
-  description: string;
+  description?: string;
+  correctedDialogues?: DialogueTurn[];
 }
 
 interface ConfirmSoapNotesParams {
@@ -58,11 +62,22 @@ export async function uploadVoiceNote(
 export async function requestSoapNotes({
   transcriptionId,
   description,
+  correctedDialogues,
 }: GetSoapNotesParams) {
   try {
+    const payload =
+      correctedDialogues && correctedDialogues.length > 0
+        ? {
+            id: transcriptionId,
+            correctedDialogues,
+          }
+        : {
+            id: transcriptionId,
+            description: description ?? "",
+          };
+
     const response = await apiClient.post(appConfig.api.getSoapPath, {
-      id: transcriptionId,
-      description,
+      ...payload,
     });
 
     return response.data;

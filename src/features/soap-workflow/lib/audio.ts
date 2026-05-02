@@ -14,5 +14,9 @@ export function formatTime(totalSeconds: number) {
 }
 
 export function isAudioFile(file: File) {
-  return file.type.startsWith('audio/') || /\.(wav|mp3|m4a|aac|webm|ogg)$/i.test(file.name)
+  return (
+    file.type.startsWith('audio/') ||
+    file.type === 'video/mp4' ||
+    /\.(wav|mp3|m4a|aac|webm|ogg|mp4)$/i.test(file.name)
+  )
 }
